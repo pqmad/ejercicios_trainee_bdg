@@ -1,2 +1,9 @@
-# ejercicios_trainee_bdg
-BDG Trainee
+# Ejercicios de Trainee BDG
+
+> 📌 **Información**
+
+| Nombre | Correo |
+| :--: | :--: |
+| Madeline Pérez | arianaperezq@gmail.com |
+
+
