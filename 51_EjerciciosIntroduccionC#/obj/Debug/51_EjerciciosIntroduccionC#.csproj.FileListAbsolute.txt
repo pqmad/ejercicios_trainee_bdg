@@ -1,0 +1,8 @@
+C:\Users\arian\Desktop\ejercicios_trainee_bdg\51_EjerciciosIntroduccionC#\bin\Debug\51_EjerciciosIntroduccionC#.exe.config
+C:\Users\arian\Desktop\ejercicios_trainee_bdg\51_EjerciciosIntroduccionC#\bin\Debug\51_EjerciciosIntroduccionC#.exe
+C:\Users\arian\Desktop\ejercicios_trainee_bdg\51_EjerciciosIntroduccionC#\bin\Debug\51_EjerciciosIntroduccionC#.pdb
+C:\Users\arian\Desktop\ejercicios_trainee_bdg\51_EjerciciosIntroduccionC#\obj\Debug\51_EjerciciosIntroduccionC#.csproj.AssemblyReference.cache
+C:\Users\arian\Desktop\ejercicios_trainee_bdg\51_EjerciciosIntroduccionC#\obj\Debug\51_EjerciciosIntroduccionC#.csproj.SuggestedBindingRedirects.cache
+C:\Users\arian\Desktop\ejercicios_trainee_bdg\51_EjerciciosIntroduccionC#\obj\Debug\51_EjerciciosIntroduccionC#.csproj.CoreCompileInputs.cache
+C:\Users\arian\Desktop\ejercicios_trainee_bdg\51_EjerciciosIntroduccionC#\obj\Debug\51_EjerciciosIntroduccionC#.exe
+C:\Users\arian\Desktop\ejercicios_trainee_bdg\51_EjerciciosIntroduccionC#\obj\Debug\51_EjerciciosIntroduccionC#.pdb

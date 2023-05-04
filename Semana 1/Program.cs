@@ -58,7 +58,7 @@ namespace Inciso2_Framework_4._6
                 Console.WriteLine("El "+numero+" no es primo");
             }
             #endregion
-
+	    Console.ReadKey();
         }
     }
 }
