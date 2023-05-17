@@ -41,9 +41,11 @@ class Program
             
         }
 
-        //Inciso 1: mprimir la información de todos los estudiantes de la lista, incluyendo su nombre completo, número de identificación, carrera y promedio de notas.
+        //Inciso 1: Imprimir la información de todos los estudiantes de la lista, incluyendo su nombre completo, número de identificación, carrera y promedio de notas.
         ImprimeDatosEstudiantes();
+        //Inciso 2: Imprimir el nombre completo y número de identificación de todos los estudiantes que tengan un promedio de notas mayor o igual a 6.
         ImprimeEstudiantesPromedio60();
+        //Inciso 3: Imprimir promedio de toda la clase.
         ImprimePromedioGeneral();
         ReadKey();
     }
