@@ -16,16 +16,16 @@ class Program
         var cantidad = 0;
         while (cantidad < 5)
         {
-            var nombre = PedirDatos("Ingrese Nombre:");
-            var apellido = PedirDatos("Ingrese Apellido:");
-            var carnet = PedirDatos("Ingrese Carnet:");
-            var carrera = PedirDatos("Ingrese Carrera:");
+            var nombre = $"NombrePersona {cantidad}";
+            var apellido = $"ApellidoPersona {cantidad}";
+            Random rnd = new Random(); // para carnet y notas
+            var carrera = $"Carrera {cantidad}";
             // Se hace la instacia del alumno y se inicializa
-            Alumno alumno = new Alumno(nombre, apellido, Convert.ToInt32(carnet), carrera);
+            Alumno alumno = new Alumno(nombre, apellido, rnd.Next(1000, 10000), carrera);
 
             // se piden las notas y se agregan a un List
             List<double> notas = new List<double>();
-            PedirNotas(ref notas);
+            PedirNotas(ref notas, rnd);
 
             if (alumno.IngresoDeNotas(notas)) //ingreso de notas correctamente
             {
@@ -50,21 +50,14 @@ class Program
         ReadKey();
     }
 
-    public static string PedirDatos(string cadena)      
-    {
-        WriteLine(cadena);
-        var datoRecibido= ReadLine();
-        return datoRecibido;
-    }
+ 
 
-    public static void PedirNotas(ref List<double> notas)
+    public static void PedirNotas(ref List<double> notas, Random rnd)
     {
-        var i = 1;
-        while (i < 6) 
+        var i = 0;
+        while (i < 5) 
         {
-            WriteLine($"Ingrese nota del curso {i}");
-            var datoRecibido =Convert.ToDouble(ReadLine()) ;
-            notas.Add(datoRecibido);
+            notas.Add(rnd.Next(0, 100));
             i++;
         }
         
