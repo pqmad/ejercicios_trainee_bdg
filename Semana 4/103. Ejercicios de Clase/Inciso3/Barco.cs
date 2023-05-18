@@ -12,11 +12,15 @@ namespace Inciso3
             Console.WriteLine("El Avion se está desplazando por aire.");
         }
 
-        public override void Saludo(string soy)
+        public override void Desplazar(int metros)
         {
-            Console.WriteLine($"Hola! soy un {soy}");
+            Console.WriteLine($"El Avion se está desplazando {metros} metros por aire.");
         }
 
+        public override void Desplazar(string destino)
+        {
+            Console.WriteLine($"El Avion se está desplazando a {destino} por aire.");
+        }
     }
 }
 

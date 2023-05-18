@@ -12,9 +12,14 @@ namespace Inciso3
             Console.WriteLine("El coche se está desplazando por la carretera.");
         }
 
-        public override void Saludo(string soy)
+        public override void Desplazar(int metros)
         {
-            Console.WriteLine($"Hola! soy un {soy}");
+            Console.WriteLine($"El coche se está desplazando {metros} metros por la carretera.");
+        }
+
+        public override void Desplazar(string destino)
+        {
+            Console.WriteLine($"El coche se está desplazando a {destino} por la carretera.");
         }
 
     }

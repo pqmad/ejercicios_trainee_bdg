@@ -12,11 +12,15 @@ namespace Inciso3
             Console.WriteLine("El Barco se está desplazando por agua.");
         }
 
-        public override void Saludo(string soy)
+        public override void Desplazar(int metros)
         {
-            Console.WriteLine($"Hola! soy un {soy}");
+            Console.WriteLine($"El Barco se está desplazando {metros} metros por agua.");
         }
 
+        public override void Desplazar(string destino)
+        {
+            Console.WriteLine($"El Barco se está desplazando a {destino} por agua.");
+        }
     }
 }
 

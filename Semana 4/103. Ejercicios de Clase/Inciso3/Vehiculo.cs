@@ -7,11 +7,9 @@ namespace Inciso3
 	public abstract class Vehiculo
 	{
 		public abstract void Desplazar();
+		public abstract void Desplazar(int metros);
+		public abstract void Desplazar(string destino);
 
-		public virtual void Saludo(string soy)
-		{
-			WriteLine($"Hola! soy un {soy}");
-		}
 	}
 }
 
