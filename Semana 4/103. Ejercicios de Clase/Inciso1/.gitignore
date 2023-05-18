@@ -1,9 +1,7 @@
 .vs
 bin
 obj
-properties
 
 Inciso1.csproj
 Inciso1.sln
-App.config
 .DS_Store
