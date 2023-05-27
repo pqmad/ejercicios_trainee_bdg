@@ -1,4 +1,7 @@
 ﻿using System;
+using static System.Console;
+
+
 namespace RetoSemanal4
 {
 	public class Libro:Material
@@ -14,19 +17,22 @@ namespace RetoSemanal4
         {
             if (Disponible)
             {
-                Console.WriteLine("Exito", Titulo);
                 Disponible = false;
+                WriteLine($"Se PRESTO el {Titulo} con exito");
+                return;
             }
-            else
-            {
-                Console.WriteLine("No está disponible para préstamo.", Titulo);
-            }
+            WriteLine($"NO se presto el {Titulo}");
         }
 
         public void Devolver()
         {
-            Console.WriteLine("Ha sido devuelto.", Titulo);
-            Disponible = true;
+            if (!Disponible)
+            {
+                Disponible = true;
+                WriteLine($"Se DEVOLVIO el {Titulo} con exito");
+                return;
+            }
+            WriteLine($"NO se devolvio el {Titulo}");
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using static System.Console;
 
 namespace RetoSemanal4
 {
@@ -31,32 +32,53 @@ namespace RetoSemanal4
             return listadoResultados;
         }
 
-        public bool DevolverMaterial(Material material)
+        public void DevolverMaterial(Material material)
         {
             foreach (var item in ListadoBiblioteca)
             {
-                if (item.Titulo.ToLower().Contains(material.Titulo.ToLower().Trim())
-                    && !item.Disponible)
+                if (item.Titulo.ToLower().Contains(material.Titulo.ToLower().Trim()))
                 {
-                    item.Disponible = true;
-                    return true;
+                    if (item.GetType() == typeof(Libro) && material.GetType() == typeof(Libro))
+                    {
+                        Libro libro = (Libro)item;
+                        libro.Devolver();
+                        return;
+                    }
+                    else if (item.GetType() == typeof(Revista) && material.GetType() == typeof(Revista))
+                    {
+                        if (!item.Disponible)
+                        {
+                            item.Disponible = true;
+                            WriteLine($"Se DEVOLVIO el {item.Titulo} con exito");
+                            return;
+                        }
+                        WriteLine($"NO se devolvio el {item.Titulo}");
+                        return;
+                    }
                 }
             }
-            return false;
         }
 
-        public bool PrestarMaterial(Material material)
+        public void PrestarMaterial(Material material)
         {
             foreach (var item in ListadoBiblioteca)
             {
-                if (item.Titulo.ToLower().Contains(material.Titulo.ToLower().Trim())
-                    && item.Disponible)
+                if (item.Titulo.ToLower().Contains(material.Titulo.ToLower().Trim()))
                 {
-                    item.Disponible = false;
-                    return true;
+                    if (item.GetType() == typeof(Libro) && material.GetType() == typeof(Libro))
+                    {
+                        Libro libro = (Libro)item;
+                        libro.Prestar();
+                        return;
+                    }else if(item.GetType()== typeof(Revista) && material.GetType() == typeof(Revista))
+                    {
+                        Revista revista = (Revista)item;
+                        revista.Prestar();
+                        return;
+                    }
                 }
             }
-            return false;
+            
         }
     }
 }

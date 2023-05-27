@@ -11,50 +11,54 @@ class Program
         LlenarBiblioteca_Libros(ref biblioteca);
         LlenarBiblioteca_Revistas(ref biblioteca);
 
-        ImprimirListado(biblioteca.ListadoBiblioteca);
+        //Todos los libros y revistas agregadas anteriormente
+        ImprimirListado(biblioteca.ListadoBiblioteca, "listado de biblioteca");
 
-        var resultadosBusqueda = biblioteca.BuscarPorTitulo("vista");
-        ImprimirListado(resultadosBusqueda);
+        //Verificar busqueda titulos que contengan "vista"
+        var palabraBuscar = "vista";
+        var resultadosBusqueda = biblioteca.BuscarPorTitulo(palabraBuscar);
+        ImprimirListado(resultadosBusqueda, $"busqueda de \"{palabraBuscar}\"");
 
-        if (biblioteca.PrestarMaterial(new Libro($"Libro0", true, $"Autor0")))
-        {
-            WriteLine("Se PRESTO el item con exito");
-        }
-        else
-        {
-            WriteLine("NO se presto el item");
-        }
+        //Prestar un libro
+        biblioteca.PrestarMaterial(new Libro($"Libro0", true, $"Autor0"));
+        biblioteca.PrestarMaterial(new Revista($"Revista1", true, $"Edicion 001"));
+        biblioteca.PrestarMaterial(new Libro($"Libro3", true, $"Autor3"));
+        biblioteca.PrestarMaterial(new Revista($"Revista4", true, $"Edicion 004"));
 
-        resultadosBusqueda = biblioteca.BuscarPorTitulo("0");
-        ImprimirListado(resultadosBusqueda);
 
-        if (biblioteca.DevolverMaterial(new Libro($"Libro0", true, $"Autor0")))
-        {
-            WriteLine("Se DEVOLVIO el item con exito");
-        }
-        else
-        {
-            WriteLine("NO se devolvio el item");
-        }
 
-        resultadosBusqueda = biblioteca.BuscarPorTitulo("0");
-        ImprimirListado(resultadosBusqueda);
+
+        biblioteca.DevolverMaterial(new Libro($"Libro0", true, $"Autor0"));
+        biblioteca.DevolverMaterial(new Revista($"Revista4", true, $"Edicion 004"));
+
+        ImprimirListado(biblioteca.ListadoBiblioteca, "listado de biblioteca");
 
         ReadKey();
 
     }
-    public static void ImprimirListado(List<Material> listado)
+    public static void ImprimirListado(List<Material> listado, string titulo)
     {
-        WriteLine("\n\nRESULTADOS DE BUSQUEDA\n");
+        WriteLine("\n-------------------------------------------------");
+        WriteLine(titulo.ToUpper()+ "\n");
         foreach (var item in listado)
         {
             var estado = "No Disponible";
             if (item.Disponible) estado = "Disponible";
 
-            WriteLine(item.Titulo + " - " + estado);
-        }
+            if (item.GetType() == typeof(Libro))
+            {
+                Libro libro = (Libro)item;
+                WriteLine(libro.Titulo + " - " + estado+ " - " + libro.Autor);
+            }
+            else if (item.GetType() == typeof(Revista))
+            {
+                Revista revista= (Revista)item;
+                WriteLine(revista.Titulo + " - " + estado + " - " + revista.Edicion);
+            }
+           
 
-        WriteLine("\n\n\n");
+        }
+        WriteLine("\n-------------------------------------------------\n");
     }
 
     public static void LlenarBiblioteca_Libros(ref Biblioteca biblioteca)
@@ -62,7 +66,7 @@ class Program
         var cantidad = 0;
         while (cantidad < 5)
         {
-            Libro libro = new Libro($"Libro{cantidad}", true, $"Autor{cantidad}");
+            Material libro = new Libro($"Libro{cantidad}", true, $"Autor{cantidad}");
             biblioteca.AgregarMaterial(libro);
             WriteLine("Se agrego item a la biblioteca");
             cantidad++;
@@ -74,7 +78,7 @@ class Program
         var cantidad = 0;
         while (cantidad < 5)
         {
-            Revista revista = new Revista($"Revista{cantidad}", true, $"Edicion 00{cantidad}");
+            Material revista = new Revista($"Revista{cantidad}", true, $"Edicion 00{cantidad}");
             biblioteca.AgregarMaterial(revista);
             WriteLine("Se agrego item a la biblioteca");
             cantidad++;

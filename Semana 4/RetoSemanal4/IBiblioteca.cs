@@ -5,8 +5,8 @@ namespace RetoSemanal4
 	{
 		public void AgregarMaterial(Material material);
 		public List<Material> BuscarPorTitulo(string titulo);
-        public bool PrestarMaterial(Material material);
-        public bool DevolverMaterial(Material material);
+        public void PrestarMaterial(Material material);
+        public void DevolverMaterial(Material material);
 
     }
 }

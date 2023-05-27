@@ -1,4 +1,6 @@
 ﻿using System;
+using static System.Console;
+
 namespace RetoSemanal4
 {
 	public class Revista:Material
@@ -14,13 +16,11 @@ namespace RetoSemanal4
         {
             if (Disponible)
             {
-                Console.WriteLine("Exito", Titulo);
                 Disponible = false;
+                WriteLine($"Se PRESTO la {Titulo} con exito");
+                return;
             }
-            else
-            {
-                Console.WriteLine("No está disponible para préstamo.", Titulo);
-            }
+            WriteLine($"NO se presto la {Titulo}");
         }
     }
 }
