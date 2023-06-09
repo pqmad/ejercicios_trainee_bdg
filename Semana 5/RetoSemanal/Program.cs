@@ -52,7 +52,7 @@ class Program
                 
             }
         }
-        
+        WriteLine("Se finalizó el programa, presione cualquier tecla para salir");
         ReadKey();
 
     }
