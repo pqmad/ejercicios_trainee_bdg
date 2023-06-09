@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Text;
 
 namespace RetoSemanal
 {
@@ -36,6 +37,20 @@ namespace RetoSemanal
                     BinaryFormatter formatter = new BinaryFormatter();
                     formatter.Serialize(archivo, this);
                 }
+                var cadena = rutaArchivo + "/";
+                var ruta = "jugadores.txt";
+                FileStream archivojugadores;
+                if (File.Exists(ruta))
+                    {
+                    archivojugadores = new FileStream(ruta, FileMode.Append);
+                    }
+                else
+                    {
+                    archivojugadores = new FileStream(ruta, FileMode.Create);
+                    }
+                archivojugadores.Write(ASCIIEncoding.ASCII.GetBytes(cadena), 0, cadena.Length);
+                archivojugadores.Close();
+                
                 Console.WriteLine("Los datos se han GUARDADO correctamente.");
             }
             catch (Exception ex)

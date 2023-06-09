@@ -1,4 +1,6 @@
-﻿using static System.Console;
+﻿using System.Collections.Specialized;
+using System.Text;
+using static System.Console;
 
 
 namespace RetoSemanal;
@@ -36,10 +38,48 @@ class Program
             ImprimirPropiedadesJugador(jugador);
             
         }
+        var nombre = "";
+        while (!nombre.Equals("0"))
+        {
+            WriteLine("Busca a un jugador, presiona 0 para salir:");
+            nombre = ReadLine().ToLower().Trim();
+            if (!nombre.Equals("0"))
+            {
+                if (!Busqueda(nombre))
+                {
+                    WriteLine("No se ha encotrado ningun usuario con ese nombre");
+                }
+                
+            }
+        }
+        
         ReadKey();
 
     }
 
+    private static bool Busqueda(String nombre)
+    {
+        var ruta = "jugadores.txt";
+        FileStream archivo;
+        byte[] contenido = new byte[10000];
+
+        archivo = new FileStream(ruta, FileMode.Open);
+        archivo.Read(contenido, 0, (int)archivo.Length);
+        archivo.Close();
+
+        var texto = ASCIIEncoding.ASCII.GetString(contenido).Split("/");
+        foreach (var usuario in texto)
+        {
+            if (usuario.ToLower().Contains(nombre))
+            {
+                Jugador jugador = new Jugador();
+                jugador = Jugador.CargarDatos(usuario);
+                ImprimirPropiedadesJugador(jugador);
+                return true;
+            }
+        }
+        return false;
+    }
     private static void ImprimirPropiedadesJugador(Jugador jugadorCargado)
     {
         if (!jugadorCargado.nombre.Equals("Jugador Desconocido"))
