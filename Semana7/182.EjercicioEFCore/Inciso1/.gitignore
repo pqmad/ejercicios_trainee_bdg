@@ -1,0 +1,11 @@
+.vs
+bin
+obj
+Properties
+Controllers
+WeatherForecast.cs
+
+Inciso1.csproj
+Inciso1.sln
+Appsettings.json
+appsettings.Development.json
