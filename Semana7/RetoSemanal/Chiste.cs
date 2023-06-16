@@ -42,7 +42,7 @@ namespace RetoSemanal
 
         public void GuardarDatos()
         {
-            var cadena = $"{id}#{value}/";
+            var cadena = $"{id}##{value}//";
             try
             {
                 FileStream archivojugadores;
@@ -67,7 +67,7 @@ namespace RetoSemanal
 
         public bool Busqueda(String aBuscar, bool busquedaCliente)
         {
-            var encontróChisteCliente = false;
+            var encontroChisteCliente = false;
             if (File.Exists(_rutaArchivo))
             {
                 FileStream archivo;
@@ -77,11 +77,11 @@ namespace RetoSemanal
                 archivo.Read(contenido, 0, (int)archivo.Length);
                 archivo.Close();
 
-                var texto = ASCIIEncoding.ASCII.GetString(contenido).Split("/");
+                var texto = ASCIIEncoding.ASCII.GetString(contenido).Split("//");
                 
                 foreach (var chiste in texto)
                 {
-                    var datosChiste = chiste.Split("#");
+                    var datosChiste = chiste.Split("##");
                     if(datosChiste.Length > 1)
                     {
                         if (!busquedaCliente && datosChiste[0].Equals(aBuscar))
@@ -94,14 +94,14 @@ namespace RetoSemanal
                             WriteLine($"ID:  {datosChiste[0]}");
                             WriteLine($"CHISTE:  {datosChiste[1]}");
                             WriteLine("-----------------------------");
-                            encontróChisteCliente = true;
+                            encontroChisteCliente = true;
                         }
                     }
                     
                 }
                
             }
-            return encontróChisteCliente;
+            return encontroChisteCliente;
         }
 
 
